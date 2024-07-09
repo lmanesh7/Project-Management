@@ -1,0 +1,44 @@
+/* CreateUserStory.css */
+.create-user-story {
+    padding: 20px;
+    background-color: #f5f5f5;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    min-height: 100vh;
+  }
+  
+  .create-user-story h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  textarea,
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

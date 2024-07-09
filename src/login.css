@@ -1,0 +1,19 @@
+
+.login-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgb(12, 12, 12);
+    background-color: #cac7c7;
+  }
+.app-header {
+    text-align: center; /* This will allign content to center */
+  }
+  .login-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  

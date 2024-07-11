@@ -15,7 +15,7 @@ app.use(bodyParser.json());// to parse json request bodies
 
 //connection to mongodb
 //mongodb+srv://eppanooripooja02:pooja1998@cluster0.3laa2ot.mongodb.net/
-mongoose.connect('mongodb://127.0.0.1/Pooja',
+mongoose.connect('mongodb+srv://lmanesh235:Manesh@cluster0.oreqmhg.mongodb.net/',
  {
      useNewUrlParser: true
       //useUnifiedTopology: true 
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const User = mongoose.model('UserInfoPooja', userSchema); //To interact with the database
+const User = mongoose.model('Users', userSchema); //To interact with the database
 
 // Define a POST endpoint for user signup
 app.post('/signup', async (req, res) => {

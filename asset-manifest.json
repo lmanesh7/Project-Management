@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/project-management/static/css/main.5ac34333.css",
-    "main.js": "/project-management/static/js/main.e7b21405.js",
+    "main.js": "/project-management/static/js/main.01fcbc3e.js",
     "static/js/787.c91758ff.chunk.js": "/project-management/static/js/787.c91758ff.chunk.js",
     "index.html": "/project-management/index.html",
     "main.5ac34333.css.map": "/project-management/static/css/main.5ac34333.css.map",
-    "main.e7b21405.js.map": "/project-management/static/js/main.e7b21405.js.map",
+    "main.01fcbc3e.js.map": "/project-management/static/js/main.01fcbc3e.js.map",
     "787.c91758ff.chunk.js.map": "/project-management/static/js/787.c91758ff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ac34333.css",
-    "static/js/main.e7b21405.js"
+    "static/js/main.01fcbc3e.js"
   ]
 }

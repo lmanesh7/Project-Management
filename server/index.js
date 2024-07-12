@@ -15,7 +15,7 @@ app.use(bodyParser.json());// to parse json request bodies
 
 //connection to mongodb
 //mongodb+srv://eppanooripooja02:pooja1998@cluster0.3laa2ot.mongodb.net/
-mongoose.connect('mongodb+srv://lmanesh235:Manesh@cluster0.oreqmhg.mongodb.net/',
+mongoose.connect('mongodb+srv://lmanesh235:Manesh@cluster0.oreqmhg.mongodb.net/project_management',
  {
      useNewUrlParser: true
       //useUnifiedTopology: true 
@@ -118,7 +118,7 @@ app.get('/getusers', async (req, res) => {
     owners = teams_.map((owner) => owner.team_name);
     managers = managers_.map((user) => user.firstName); 
 
-    res.json({ managers_, teams_ });
+    res.json({ managers_, teams_ });  
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Internal Server Error' });

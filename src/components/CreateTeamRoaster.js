@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import Select from 'react-select';
 import './CreateProject.css';
 import Sidebar from './HomePage';
@@ -15,13 +16,13 @@ const CreateTeamRoaster = () => {
 
   // Fetch the list of teams and members from the backend
   useEffect(() => {
-    fetch(`${process.env.SERVER_DB}/getTeams`)
+    fetch(`${SERVER_DB}/getTeams`)
       .then(response => response.json())
       .then(data => setTeams(data.teamNames));
   }, []);
 
   useEffect(() => {
-    fetch(`${process.env.SERVER_DB}/getusersforroster`)
+    fetch(`${SERVER_DB}/getusersforroster`)
       .then(response => response.json())
       .then(data => setMembers(data.managers_));
   }, []);
@@ -41,7 +42,7 @@ const CreateTeamRoaster = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(teamRoaster);
-    fetch(`${process.env.SERVER_DB}/addTeamMembers`, {
+    fetch(`${SERVER_DB}/addTeamMembers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

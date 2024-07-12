@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import '../login.css'; // This is for Importing your .CSS file
 import axios from 'axios'; // For making http requests
 
@@ -11,7 +12,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       //code for sending a post request to the server
-      const response = await axios.post(`${process.env.SERVER_DB}/login`, {
+      const response = await axios.post(`${SERVER_DB}/login`, {
         userId,
         password,
       });

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CreateProject.css';
 import Sidebar from './HomePage';
+import { SERVER_DB } from '../helpers/variables';
 
 const CreateProject = () => {
   const [project, setProject] = useState({
@@ -37,7 +38,7 @@ const CreateProject = () => {
     };
   
     // Make a POST request to the server
-    fetch(`${process.env.SERVER_DB}/createProject`, {
+    fetch(`${SERVER_DB}/createProject`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +66,7 @@ const CreateProject = () => {
   };
   
   useEffect(() => {
-    fetch(`${process.env.SERVER_DB}/getusers`)
+    fetch(`${SERVER_DB}/getusers`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

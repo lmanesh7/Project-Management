@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import axios from 'axios';
 import './CreateTaskList.css';
 import "./viewprojects.css";
@@ -19,7 +20,7 @@ const CreateTaskList = () => {
 
   // Fetch user stories from the server
   useEffect(() => {
-    axios.get(`${process.env.SERVER_DB}/getAssignedUserStoriesValue/${loggedInUser}`) 
+    axios.get(`${SERVER_DB}/getAssignedUserStoriesValue/${loggedInUser}`) 
       .then((res) => {
         console.log(res.data);
         setUserStories(res.data);
@@ -38,7 +39,7 @@ const CreateTaskList = () => {
     e.preventDefault();
 
     // Handle form submission (e.g., send data to the server)
-    axios.post(`${process.env.SERVER_DB}/createTask`, task) // Replace with your API endpoint for creating tasks
+    axios.post(`${SERVER_DB}/createTask`, task) // Replace with your API endpoint for creating tasks
       .then((res) => {
        
           alert("Task Created");

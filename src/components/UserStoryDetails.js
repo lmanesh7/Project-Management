@@ -1,6 +1,7 @@
 // UserStoryDetails.jsx
 
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -13,7 +14,7 @@ const UserStoryDetails = () => {
 
   useEffect(() => {
     const fetchUserStoryData = async () => {
-      const response = await axios.get(`${process.env.SERVER_DB}/userstory/${userStoryId}`);
+      const response = await axios.get(`${SERVER_DB}/userstory/${userStoryId}`);
       setUserStory(response.data.userStory);
     };
 

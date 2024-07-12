@@ -1,6 +1,7 @@
 // TaskDetails.jsx
 
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -13,7 +14,7 @@ const TaskDetails = () => {
 
   useEffect(() => {
     const fetchTaskData = async () => {
-      const response = await axios.get(`${process.env.SERVER_DB}/task/${taskId}`);
+      const response = await axios.get(`${SERVER_DB}/task/${taskId}`);
       setTask(response.data.task);
     };
 

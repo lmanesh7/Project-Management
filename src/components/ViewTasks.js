@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { SERVER_DB } from '../helpers/variables';
 import "./viewprojects.css";
 import Sidebar from './HomePage';
 import './CreateProject.css';
@@ -13,7 +13,7 @@ const ViewTasks = () => {
     const loggedInUser = localStorage.getItem('loggedInUser');
     const lu = sessionStorage.getItem('loggedInUser');
     setLoggedInUser(lu);
-    axios.get(`${process.env.SERVER_DB}/getTasks/${loggedInUser}`).then((res) => {
+    axios.get(`${SERVER_DB}/getTasks/${loggedInUser}`).then((res) => {
       setTasks(res.data);
     }).catch((error) => {
       console.error('Error fetching tasks:', error);
@@ -23,7 +23,7 @@ const ViewTasks = () => {
   const handleChangeStatus = async (taskId, newStatus) => {
     try {
       // Update the task status
-      await axios.post(`${process.env.SERVER_DB}/updateTaskStatus`, {
+      await axios.post(`${SERVER_DB}/updateTaskStatus`, {
         taskId,
         newStatus,
       });

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import './CreateProject.css';
 import Sidebar from './HomePage';
 import axios from 'axios';
@@ -17,7 +18,7 @@ const CreateTeam = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post(`${process.env.SERVER_DB}/createTeam`, team);
+      const response = await axios.post(`${SERVER_DB}/createTeam`, team);
   
       console.log('Server response:', response.data);
       alert("Team created successfully");

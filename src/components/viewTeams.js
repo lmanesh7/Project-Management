@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import './CreateProject.css';
 import Sidebar from './HomePage';
 const ViewTeams = () => {
@@ -6,7 +7,7 @@ const ViewTeams = () => {
 
   useEffect(() => {
     // Fetch team names from the /getTeams endpoint
-    fetch(`${process.env.SERVER_DB}/getTeams`)
+    fetch(`${SERVER_DB}/getTeams`)
       .then((response) => response.json())
       .then((data) => {
         setTeamNames(data.teamNames);

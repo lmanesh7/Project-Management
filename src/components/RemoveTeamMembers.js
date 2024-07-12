@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import Select from 'react-select'; // Import Select from react-select
 import Sidebar from './HomePage';
 import './CreateProject.css';
@@ -11,7 +12,7 @@ const RemoveTeamMembers = () => {
 
   // Fetch the list of teams from the backend
   useEffect(() => {
-    fetch(`${process.env.SERVER_DB}/getTeams`)
+    fetch(`${SERVER_DB}/getTeams`)
       .then(response => response.json())
       .then(data => setTeams(data.teamNames));
   }, []);
@@ -19,7 +20,7 @@ const RemoveTeamMembers = () => {
   // Fetch the list of team members based on the selected team
   useEffect(() => {
     if (selectedTeam) {
-      fetch(`${process.env.SERVER_DB}/getTeamMembers?team=${selectedTeam}`)
+      fetch(`${SERVER_DB}/getTeamMembers?team=${selectedTeam}`)
         .then(response => response.json())
         .then(data => setTeamMembers(data.members));
     }
@@ -37,7 +38,7 @@ const RemoveTeamMembers = () => {
 
   const removeMembersFromTeam = () => {
     if (selectedTeam && selectedUsers.length > 0) {
-      fetch(`${process.env.SERVER_DB}/removeTeamMembers`, {
+      fetch(`${SERVER_DB}/removeTeamMembers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

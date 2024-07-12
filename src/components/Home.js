@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Typography, Grid, Paper, List, ListItem, Divider } from '@mui/material';
@@ -15,8 +16,8 @@ const Home = () => {
     console.log(userId)
     // Fetch data from the server
     const fetchData = async () => {
-      // Assuming your server is running at ${process.env.SERVER_DB}
-      const response = await axios.get(`${process.env.SERVER_DB}/${userId}`);
+      // Assuming your server is running at ${SERVER_DB}
+      const response = await axios.get(`${SERVER_DB}/${userId}`);
       setTeams(response.data.teams);
       setProjects(response.data.projects);
       setUserStories(response.data.userStories);

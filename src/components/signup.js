@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import '../signup.css'; // For Importing  your CSS file
 import axios from 'axios'; // For making http requests
 
@@ -13,7 +14,7 @@ function Signup() {
   const handleSignup = async () => {
     try {
       //code for sending a post request to the server
-      const response = await axios.post(`${process.env.SERVER_DB}/signup`,     
+      const response = await axios.post(`${SERVER_DB}/signup`,     
        {
         firstName,
         lastName,

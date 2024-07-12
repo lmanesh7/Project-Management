@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { SERVER_DB } from "../helpers/variables";
 import "./viewprojects.css";
 import Sidebar from "./HomePage";
 import "./CreateProject.css";
@@ -7,8 +8,8 @@ const ViewProjects = () => {
 
   useEffect(() => {
     // Fetch project details from the /getProjects endpoint
-    console.log(`${process.env.SERVER_DB}/getProjects`)
-    fetch(`${process.env.SERVER_DB}/getProjects`)
+    console.log(`${SERVER_DB}/getProjects`)
+    fetch(`${SERVER_DB}/getProjects`)
       .then((response) => response.json())
       .then((data) => {
         setProjects(data);

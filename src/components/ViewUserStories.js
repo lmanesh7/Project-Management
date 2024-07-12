@@ -1,5 +1,6 @@
 // UserStories.js
 import React, { useState, useEffect } from "react";
+import { SERVER_DB } from "../helpers/variables";
 import axios from "axios";
 import "./viewprojects.css";
 import Sidebar from './HomePage';
@@ -12,7 +13,7 @@ function UserStories() {
 
   useEffect(() => {
     // Fetch the list of projects when the component mounts
-    axios.get(`${process.env.SERVER_DB}/getProjects`)
+    axios.get(`${SERVER_DB}/getProjects`)
       .then((response) => setProjects(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -20,7 +21,7 @@ function UserStories() {
   useEffect(() => {
     // Fetch user stories for the selected project when selectedProject changes
     if (selectedProject) {
-      axios.get(`${process.env.SERVER_DB}/getUserStories/${selectedProject}`)
+      axios.get(`${SERVER_DB}/getUserStories/${selectedProject}`)
         .then((response) => setUserStories(response.data))
         .catch((error) => console.error(error));
     }
@@ -33,7 +34,7 @@ function UserStories() {
 
     const handleDelete = (userStoryId) => {
         // Send a DELETE request to your server to delete the user story.
-        axios.delete(`${process.env.SERVER_DB}/deleteUserStory/${userStoryId}`)
+        axios.delete(`${SERVER_DB}/deleteUserStory/${userStoryId}`)
           .then(() => {
             // Remove the deleted user story from the local state
             setUserStories(userStories.filter(userStory => userStory._id !== userStoryId));

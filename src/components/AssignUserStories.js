@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import axios from 'axios';
 import Sidebar from './HomePage';
 import "./viewprojects.css";
@@ -12,7 +13,7 @@ const AssignUserStories = () => {
 
   useEffect(() => {
     // Fetch team roster
-    axios.get(`${process.env.SERVER_DB}/getTeamRoster/${loggedInUser}`).then((res) => {
+    axios.get(`${SERVER_DB}/getTeamRoster/${loggedInUser}`).then((res) => {
       const teamRosterData = res.data.teamRoasterRecord;
       const teamRostersArray = Array.isArray(teamRosterData) ? teamRosterData : [teamRosterData];
       console.log("team roaster")
@@ -23,7 +24,7 @@ const AssignUserStories = () => {
     });
 
     // Fetch projects
-    axios.get(`${process.env.SERVER_DB}/getProjects`).then((res) => {
+    axios.get(`${SERVER_DB}/getProjects`).then((res) => {
       console.log("projects")
       console.log(res.data);
       setProjects(res.data);
@@ -32,14 +33,14 @@ const AssignUserStories = () => {
     });
 
     // Fetch unassigned user stories
-    axios.get(`${process.env.SERVER_DB}/getUserStories`).then((res) => {
+    axios.get(`${SERVER_DB}/getUserStories`).then((res) => {
       //console.log(res.data)
       setUserStories(res.data);
     }).catch((error) => {
       console.error('Error fetching unassigned user stories:', error);
     });
 
-    axios.get(`${process.env.SERVER_DB}/getAssignedUserStories`).then((res) => {
+    axios.get(`${SERVER_DB}/getAssignedUserStories`).then((res) => {
       //console.log(res.data)
       setAssignedUserStories(res.data);
     }).catch((error) => {
@@ -75,7 +76,7 @@ const AssignUserStories = () => {
       user_id: loggedInUser,
     };
 
-    axios.post(`${process.env.SERVER_DB}/assignStory`, assignData).then((res) => {
+    axios.post(`${SERVER_DB}/assignStory`, assignData).then((res) => {
       if(res.status === 200)
       {
         alert("Assigned Successfully");

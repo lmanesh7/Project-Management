@@ -1,6 +1,7 @@
 // TeamDetails.jsx
 
 import React, { useState, useEffect } from 'react';
+import { SERVER_DB } from '../helpers/variables';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Typography, Paper, List, ListItem, Button } from '@mui/material';
@@ -14,7 +15,7 @@ const TeamDetails = () => {
 
   useEffect(() => {
     const fetchTeamData = async () => {
-      const response = await axios.get(`${process.env.SERVER_DB}/team/${teamId}`);
+      const response = await axios.get(`${SERVER_DB}/team/${teamId}`);
       setTeam(response.data.team);
       setTeamMembers(response.data.teamMembers);
     };

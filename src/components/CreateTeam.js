@@ -17,7 +17,7 @@ const CreateTeam = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:3001/createTeam', team);
+      const response = await axios.post(`${process.env.SERVER_DB}/createTeam`, team);
   
       console.log('Server response:', response.data);
       alert("Team created successfully");

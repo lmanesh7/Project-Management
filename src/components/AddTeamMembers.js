@@ -8,14 +8,14 @@ function AddTeamMembers() {
   
   // Fetch the list of teams from the backend
   useEffect(() => {
-    fetch('http://localhost:3001/getTeams')
+    fetch(`${process.env.SERVER_DB}/getTeams`)
       .then(response => response.json())
       .then(data => setTeams(data.teamNames));
   }, []);
 
   // Fetch the list of users from the backend
   useEffect(() => {
-    fetch('http://localhost:3001/getusers')
+    fetch(`${process.env.SERVER_DB}/getusers`)
       .then(response => response.json())
       .then(data => setUsers(data.managers_));
   }, []);
@@ -36,7 +36,7 @@ function AddTeamMembers() {
     const requestBody = JSON.stringify({ team: selectedTeam, users: selectedUsers });
   
     // Send a POST request to the backend
-    fetch('http://localhost:3001/addTeamMembers', {
+    fetch(`${process.env.SERVER_DB}/addTeamMembers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

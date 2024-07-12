@@ -6,7 +6,7 @@ const ViewTeams = () => {
 
   useEffect(() => {
     // Fetch team names from the /getTeams endpoint
-    fetch('http://localhost:3001/getTeams')
+    fetch(`${process.env.SERVER_DB}/getTeams`)
       .then((response) => response.json())
       .then((data) => {
         setTeamNames(data.teamNames);

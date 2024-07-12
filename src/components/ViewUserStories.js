@@ -12,7 +12,7 @@ function UserStories() {
 
   useEffect(() => {
     // Fetch the list of projects when the component mounts
-    axios.get("http://localhost:3001/getProjects")
+    axios.get(`${process.env.SERVER_DB}/getProjects`)
       .then((response) => setProjects(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -20,7 +20,7 @@ function UserStories() {
   useEffect(() => {
     // Fetch user stories for the selected project when selectedProject changes
     if (selectedProject) {
-      axios.get(`http://localhost:3001/getUserStories/${selectedProject}`)
+      axios.get(`${process.env.SERVER_DB}/getUserStories/${selectedProject}`)
         .then((response) => setUserStories(response.data))
         .catch((error) => console.error(error));
     }
@@ -33,7 +33,7 @@ function UserStories() {
 
     const handleDelete = (userStoryId) => {
         // Send a DELETE request to your server to delete the user story.
-        axios.delete(`http://localhost:3001/deleteUserStory/${userStoryId}`)
+        axios.delete(`${process.env.SERVER_DB}/deleteUserStory/${userStoryId}`)
           .then(() => {
             // Remove the deleted user story from the local state
             setUserStories(userStories.filter(userStory => userStory._id !== userStoryId));

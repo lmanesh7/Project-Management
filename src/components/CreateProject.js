@@ -37,7 +37,7 @@ const CreateProject = () => {
     };
   
     // Make a POST request to the server
-    fetch('http://localhost:3001/createProject', {
+    fetch(`${process.env.SERVER_DB}/createProject`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const CreateProject = () => {
   };
   
   useEffect(() => {
-    fetch('http://localhost:3001/getusers')
+    fetch(`${process.env.SERVER_DB}/getusers`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

@@ -13,7 +13,7 @@ function Signup() {
   const handleSignup = async () => {
     try {
       //code for sending a post request to the server
-      const response = await axios.post('http://localhost:3001/signup',     
+      const response = await axios.post(`${process.env.SERVER_DB}/signup`,     
        {
         firstName,
         lastName,

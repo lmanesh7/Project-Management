@@ -13,7 +13,7 @@ const UserStoryDetails = () => {
 
   useEffect(() => {
     const fetchUserStoryData = async () => {
-      const response = await axios.get(`http://localhost:3001/userstory/${userStoryId}`);
+      const response = await axios.get(`${process.env.SERVER_DB}/userstory/${userStoryId}`);
       setUserStory(response.data.userStory);
     };
 

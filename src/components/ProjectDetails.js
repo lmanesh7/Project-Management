@@ -13,7 +13,7 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     const fetchProjectData = async () => {
-      const response = await axios.get(`http://localhost:3001/project/${projectId}`);
+      const response = await axios.get(`${process.env.SERVER_DB}/project/${projectId}`);
       setProject(response.data.responseData.project);
     };
 

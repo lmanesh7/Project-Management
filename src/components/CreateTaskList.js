@@ -19,7 +19,7 @@ const CreateTaskList = () => {
 
   // Fetch user stories from the server
   useEffect(() => {
-    axios.get(`http://localhost:3001/getAssignedUserStoriesValue/${loggedInUser}`) 
+    axios.get(`${process.env.SERVER_DB}/getAssignedUserStoriesValue/${loggedInUser}`) 
       .then((res) => {
         console.log(res.data);
         setUserStories(res.data);
@@ -38,7 +38,7 @@ const CreateTaskList = () => {
     e.preventDefault();
 
     // Handle form submission (e.g., send data to the server)
-    axios.post('http://localhost:3001/createTask', task) // Replace with your API endpoint for creating tasks
+    axios.post(`${process.env.SERVER_DB}/createTask`, task) // Replace with your API endpoint for creating tasks
       .then((res) => {
        
           alert("Task Created");

@@ -14,7 +14,7 @@ const TeamDetails = () => {
 
   useEffect(() => {
     const fetchTeamData = async () => {
-      const response = await axios.get(`http://localhost:3001/team/${teamId}`);
+      const response = await axios.get(`${process.env.SERVER_DB}/team/${teamId}`);
       setTeam(response.data.team);
       setTeamMembers(response.data.teamMembers);
     };

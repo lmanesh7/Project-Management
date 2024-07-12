@@ -11,7 +11,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       //code for sending a post request to the server
-      const response = await axios.post('http://localhost:3001/login', {
+      const response = await axios.post(`${process.env.SERVER_DB}/login`, {
         userId,
         password,
       });

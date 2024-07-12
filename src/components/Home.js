@@ -15,8 +15,8 @@ const Home = () => {
     console.log(userId)
     // Fetch data from the server
     const fetchData = async () => {
-      // Assuming your server is running at http://localhost:3001
-      const response = await axios.get(`http://localhost:3001/${userId}`);
+      // Assuming your server is running at ${process.env.SERVER_DB}
+      const response = await axios.get(`${process.env.SERVER_DB}/${userId}`);
       setTeams(response.data.teams);
       setProjects(response.data.projects);
       setUserStories(response.data.userStories);

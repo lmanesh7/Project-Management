@@ -13,7 +13,7 @@ const TaskDetails = () => {
 
   useEffect(() => {
     const fetchTaskData = async () => {
-      const response = await axios.get(`http://localhost:3001/task/${taskId}`);
+      const response = await axios.get(`${process.env.SERVER_DB}/task/${taskId}`);
       setTask(response.data.task);
     };
 

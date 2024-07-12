@@ -13,7 +13,7 @@ const CreateUserStory = () => {
 
   useEffect(() => {
     // Fetch projects when the component mounts
-    fetch('http://localhost:3001/getProjects') // Make sure the URL matches your API endpoint
+    fetch(`${process.env.SERVER_DB}/getProjects`) // Make sure the URL matches your API endpoint
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -41,7 +41,7 @@ const CreateUserStory = () => {
     };
 
     // Send the data to /CreateUserStory using a POST request.
-    fetch('http://localhost:3001/createUserStory', {
+    fetch(`${process.env.SERVER_DB}/createUserStory`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

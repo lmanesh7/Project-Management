@@ -12,7 +12,7 @@ const AssignUserStories = () => {
 
   useEffect(() => {
     // Fetch team roster
-    axios.get(`http://localhost:3001/getTeamRoster/${loggedInUser}`).then((res) => {
+    axios.get(`${process.env.SERVER_DB}/getTeamRoster/${loggedInUser}`).then((res) => {
       const teamRosterData = res.data.teamRoasterRecord;
       const teamRostersArray = Array.isArray(teamRosterData) ? teamRosterData : [teamRosterData];
       console.log("team roaster")
@@ -23,7 +23,7 @@ const AssignUserStories = () => {
     });
 
     // Fetch projects
-    axios.get(`http://localhost:3001/getProjects`).then((res) => {
+    axios.get(`${process.env.SERVER_DB}/getProjects`).then((res) => {
       console.log("projects")
       console.log(res.data);
       setProjects(res.data);
@@ -32,14 +32,14 @@ const AssignUserStories = () => {
     });
 
     // Fetch unassigned user stories
-    axios.get('http://localhost:3001/getUserStories').then((res) => {
+    axios.get(`${process.env.SERVER_DB}/getUserStories`).then((res) => {
       //console.log(res.data)
       setUserStories(res.data);
     }).catch((error) => {
       console.error('Error fetching unassigned user stories:', error);
     });
 
-    axios.get('http://localhost:3001/getAssignedUserStories').then((res) => {
+    axios.get(`${process.env.SERVER_DB}/getAssignedUserStories`).then((res) => {
       //console.log(res.data)
       setAssignedUserStories(res.data);
     }).catch((error) => {
@@ -50,7 +50,7 @@ const AssignUserStories = () => {
   const myTeams = Array.isArray(teamRosters) ? teamRosters.map((teamRoster) => teamRoster.team_id) : [];
 
   const filteredProjects = projects.filter((project) =>
-    myTeams.includes(project.teams_details._id)
+    myTeams.includes(project.teams_details?._id)
   );
 
   const myProjects = filteredProjects.map((project) => project.project_id);
@@ -63,7 +63,7 @@ const AssignUserStories = () => {
   myProjects.includes(userStory.proj_id)
 );
   const unassignedUserStories = filteredUserStories.filter((userStory) => {
-    return !assigned.includes(userStory._id)}
+    return !assigned.includes(userStory?._id)}
   );
   
 
@@ -75,7 +75,7 @@ const AssignUserStories = () => {
       user_id: loggedInUser,
     };
 
-    axios.post('http://localhost:3001/assignStory', assignData).then((res) => {
+    axios.post(`${process.env.SERVER_DB}/assignStory`, assignData).then((res) => {
       if(res.status === 200)
       {
         alert("Assigned Successfully");
@@ -107,13 +107,13 @@ const AssignUserStories = () => {
           </tr>
         </thead>
         <tbody>
-          {unassignedUserStories.map((userStory) => (
-            <tr key={userStory._id}>
+          {unassignedUserStories?.map((userStory) => (
+            <tr key={userStory?._id}>
               
-              <td>{userStory.user_story}</td>
-              <td>{userStory.priority}</td>
+              <td>{userStory?.user_story}</td>
+              <td>{userStory?.priority}</td>
               <td>
-                <button onClick={() => onClickAssign(userStory._id)}>
+                <button onClick={() => onClickAssign(userStory?._id)}>
                   Assign
                 </button>
               </td>

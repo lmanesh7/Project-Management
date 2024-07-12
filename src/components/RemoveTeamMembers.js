@@ -11,7 +11,7 @@ const RemoveTeamMembers = () => {
 
   // Fetch the list of teams from the backend
   useEffect(() => {
-    fetch('http://localhost:3001/getTeams')
+    fetch(`${process.env.SERVER_DB}/getTeams`)
       .then(response => response.json())
       .then(data => setTeams(data.teamNames));
   }, []);
@@ -19,7 +19,7 @@ const RemoveTeamMembers = () => {
   // Fetch the list of team members based on the selected team
   useEffect(() => {
     if (selectedTeam) {
-      fetch(`http://localhost:3001/getTeamMembers?team=${selectedTeam}`)
+      fetch(`${process.env.SERVER_DB}/getTeamMembers?team=${selectedTeam}`)
         .then(response => response.json())
         .then(data => setTeamMembers(data.members));
     }
@@ -37,7 +37,7 @@ const RemoveTeamMembers = () => {
 
   const removeMembersFromTeam = () => {
     if (selectedTeam && selectedUsers.length > 0) {
-      fetch('http://localhost:3001/removeTeamMembers', {
+      fetch(`${process.env.SERVER_DB}/removeTeamMembers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

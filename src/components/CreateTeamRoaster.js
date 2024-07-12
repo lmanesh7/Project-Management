@@ -15,13 +15,13 @@ const CreateTeamRoaster = () => {
 
   // Fetch the list of teams and members from the backend
   useEffect(() => {
-    fetch('http://localhost:3001/getTeams')
+    fetch(`${process.env.SERVER_DB}/getTeams`)
       .then(response => response.json())
       .then(data => setTeams(data.teamNames));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3001/getusersforroster')
+    fetch(`${process.env.SERVER_DB}/getusersforroster`)
       .then(response => response.json())
       .then(data => setMembers(data.managers_));
   }, []);
@@ -41,7 +41,7 @@ const CreateTeamRoaster = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(teamRoaster);
-    fetch('http://localhost:3001/addTeamMembers', {
+    fetch(`${process.env.SERVER_DB}/addTeamMembers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

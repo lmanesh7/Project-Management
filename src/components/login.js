@@ -26,7 +26,7 @@ function Login() {
         const username = response.data.data.firstName + " "+ response.data.data.lastName
         sessionStorage.setItem('loggedInUser', username);
         debugger;
-        window.location.href = "./home-page";
+        window.location.href = "./Project-Management/home-page";
       } else {
         alert('Login failed');
       }

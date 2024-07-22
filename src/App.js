@@ -22,6 +22,7 @@ import TaskDetails from './components/TaskDetails';
 import TeamDetails from './components/TeamDetails';
 import ProjectDetails from './components/ProjectDetails';
 import UserStoryDetails from './components/UserStoryDetails';
+import Logout from './components/Logout';
 function App() {
   const [isLoginView, setIsLoginView] = useState(true);
 
@@ -33,25 +34,26 @@ function App() {
   <Router>
  
     <Routes>
-    <Route path="/Project-Management" element={<Startup />} />
-    <Route exact path="/Project-Management/home" element={<Sidebar/>} />
-    <Route exact path="/Project-Management/create-project" element={<CreateProject/>} />
-    <Route exact path="/Project-Management/create-task-list" element={<CreateTaskList/>} />
-    <Route exact path="/Project-Management/create-user-story" element={<CreateUserStory/>} />
-    <Route exact path='/Project-Management/create-team' element={<CreateTeam/>}/>
-    <Route exact path="/Project-Management/create-team-roaster" element={<CreateTeamRoaster/>}/>
-    <Route exact path="/Project-Management/view-projects" element={<ViewProjects/>}/>
-    <Route exact path="/Project-Management/view-teams" element={<ViewTeams/>}/>
-    <Route exact path="/Project-Management/view-user-stories" element={<UserStories/>}/>
-    <Route exact path="/Project-Management/add-team-members" element={<AddTeamMembers/>}/>
-    <Route exact path="/Project-Management/remove-team-members" element={<RemoveTeamMembers/>}/>
-    <Route exact path="/Project-Management/assign-user-stories" element={<AssignUserStories/>}/>
-    <Route exact path="/Project-Management/view-tasks" element={<ViewTasks/>}/>
-    <Route exact path="/Project-Management/home-page" element={<Home/>}/>
-    <Route exact path="/Project-Management/team/:teamId" element={<TeamDetails/>} />
-    <Route exact path="/Project-Management/task/:taskId" element={<TaskDetails/>} />
-    <Route exact path="/Project-Management/project/:projectId" element={<ProjectDetails/>} />
-    <Route exact path="/Project-Management/userstory/:userStoryId" element={<UserStoryDetails/>} />
+    <Route path="/" element={<Startup />} />
+    <Route exact path="/home" element={<Sidebar/>} />
+    <Route exact path="/create-project" element={<CreateProject/>} />
+    <Route exact path="/create-task-list" element={<CreateTaskList/>} />
+    <Route exact path="/create-user-story" element={<CreateUserStory/>} />
+    <Route exact path='/create-team' element={<CreateTeam/>}/>
+    <Route exact path="/create-team-roaster" element={<CreateTeamRoaster/>}/>
+    <Route exact path="/view-projects" element={<ViewProjects/>}/>
+    <Route exact path="/view-teams" element={<ViewTeams/>}/>
+    <Route exact path="/view-user-stories" element={<UserStories/>}/>
+    <Route exact path="/add-team-members" element={<AddTeamMembers/>}/>
+    <Route exact path="/remove-team-members" element={<RemoveTeamMembers/>}/>
+    <Route exact path="/assign-user-stories" element={<AssignUserStories/>}/>
+    <Route exact path="/view-tasks" element={<ViewTasks/>}/>
+    <Route exact path="/home-page" element={<Home/>}/>
+    <Route exact path="/team/:teamId" element={<TeamDetails/>} />
+    <Route exact path="/task/:taskId" element={<TaskDetails/>} />
+    <Route exact path="/project/:projectId" element={<ProjectDetails/>} />
+    <Route exact path="/userstory/:userStoryId" element={<UserStoryDetails/>} />
+    <Route exact path="/log-out" element={<Logout/>} />
     </Routes>
     
     </Router>

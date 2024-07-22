@@ -11,67 +11,81 @@ import {
   faUsersBetweenLines,
   faPenToSquare,
   faEye,
-  faTags
+  faTags,
+faRightFromBracket
 } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = () => {
+  const user = localStorage.getItem('loggedInUser');
+
+  if (!user) {
+     window.location = '/'
+    return (
+      <div className="sidebar">
+        <div className="login-prompt">
+          Please log in to continue.
+        </div>
+      </div>
+    );
+    window.location = '/'
+  }
   return (
     <div className="sidebar">
       <div className="sidebar-header">
         <FontAwesomeIcon icon={faProjectDiagram} className="icon" />
-        Project Management
+        <a href='/home-page'>Project Management</a>
       </div>
       <ul className="sidebar-menu">
         <li>
-          <a href="/Project-Management/create-project">
+          <a href="/create-project">
             <FontAwesomeIcon icon={faProjectDiagram} className="icon" />
             Create Project
           </a>
         </li>
         <li>
-          <a href="/Project-Management/create-team">
+          <a href="/create-team">
             <FontAwesomeIcon icon={faUsers} className="icon" />
             Create Team
           </a>
         </li>
         <li>
-          <a href="/Project-Management/create-team-roaster">
+          <a href="/create-team-roaster">
             <FontAwesomeIcon icon={faUserFriends} className="icon" />
             Create Team Roster
           </a>
         </li>
         <li>
-          <a href="/Project-Management/remove-team-members">
+          <a href="/remove-team-members">
           <FontAwesomeIcon icon={faPenToSquare} className='icon' />
             Remove Team Members
           </a>
         </li>
         <li>
-          <a href="/Project-Management/create-user-story">
+          <a href="/create-user-story">
             <FontAwesomeIcon icon={faStickyNote} className="icon" />
             Create User Story
           </a>
         </li>
         <li>
-          <a href="/Project-Management/assign-user-stories">
+          <a href="/assign-user-stories">
           <FontAwesomeIcon icon={faTags}  className='icon' />
             Assign User Stories
           </a>
         </li>
         <li>
-          <a href="/Project-Management/view-user-stories">
+          <a href="/view-user-stories">
           <FontAwesomeIcon icon={faEye} className='icon' />
             View User Stories
           </a>
         </li>
         <li>
-          <a href="/Project-Management/view-projects">
+          <a href="/view-projects">
           <FontAwesomeIcon icon={faRectangleList} className='icon' />
             Project List
           </a>
         </li>
         <li>
-          <a href="/Project-Management/view-teams">
+          <a href="/view-teams">
           <FontAwesomeIcon icon={faUsersBetweenLines} className='icon' />
             Team List
           </a>
@@ -79,18 +93,23 @@ const Sidebar = () => {
     
    
         <li>
-          <a href="/Project-Management/create-task-list">
+          <a href="/create-task-list">
             <FontAwesomeIcon icon={faTasks} className="icon" />
             Create Task
           </a>
         </li>
         <li>
-          <a href="/Project-Management/view-tasks">
+          <a href="/view-tasks">
           <FontAwesomeIcon icon={faEye} className='icon' />
             View Tasks
           </a>
         </li>
-   
+        <li>
+          <a href="/log-out">
+          <FontAwesomeIcon icon={faRightFromBracket} className='icon' />
+            Log Out
+          </a>
+        </li>
       </ul>
     </div>
   );

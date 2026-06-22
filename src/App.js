@@ -22,6 +22,9 @@ import TaskDetails from './components/TaskDetails';
 import TeamDetails from './components/TeamDetails';
 import ProjectDetails from './components/ProjectDetails';
 import UserStoryDetails from './components/UserStoryDetails';
+import ProtectedRoute from './components/ProtectedRoute';
+import SessionManager from './components/SessionManager';
+
 function App() {
   const [isLoginView, setIsLoginView] = useState(true);
 
@@ -31,27 +34,27 @@ function App() {
 
   return (
   <Router>
- 
+    <SessionManager />
     <Routes>
     <Route path="/Project-Management" element={<Startup />} />
-    <Route exact path="/Project-Management/home" element={<Sidebar/>} />
-    <Route exact path="/Project-Management/create-project" element={<CreateProject/>} />
-    <Route exact path="/Project-Management/create-task-list" element={<CreateTaskList/>} />
-    <Route exact path="/Project-Management/create-user-story" element={<CreateUserStory/>} />
-    <Route exact path='/Project-Management/create-team' element={<CreateTeam/>}/>
-    <Route exact path="/Project-Management/create-team-roaster" element={<CreateTeamRoaster/>}/>
-    <Route exact path="/Project-Management/view-projects" element={<ViewProjects/>}/>
-    <Route exact path="/Project-Management/view-teams" element={<ViewTeams/>}/>
-    <Route exact path="/Project-Management/view-user-stories" element={<UserStories/>}/>
-    <Route exact path="/Project-Management/add-team-members" element={<AddTeamMembers/>}/>
-    <Route exact path="/Project-Management/remove-team-members" element={<RemoveTeamMembers/>}/>
-    <Route exact path="/Project-Management/assign-user-stories" element={<AssignUserStories/>}/>
-    <Route exact path="/Project-Management/view-tasks" element={<ViewTasks/>}/>
-    <Route exact path="/Project-Management/home-page" element={<Home/>}/>
-    <Route exact path="/Project-Management/team/:teamId" element={<TeamDetails/>} />
-    <Route exact path="/Project-Management/task/:taskId" element={<TaskDetails/>} />
-    <Route exact path="/Project-Management/project/:projectId" element={<ProjectDetails/>} />
-    <Route exact path="/Project-Management/userstory/:userStoryId" element={<UserStoryDetails/>} />
+    <Route exact path="/Project-Management/home" element={<ProtectedRoute><Sidebar/></ProtectedRoute>} />
+    <Route exact path="/Project-Management/create-project" element={<ProtectedRoute><CreateProject/></ProtectedRoute>} />
+    <Route exact path="/Project-Management/create-task-list" element={<ProtectedRoute><CreateTaskList/></ProtectedRoute>} />
+    <Route exact path="/Project-Management/create-user-story" element={<ProtectedRoute><CreateUserStory/></ProtectedRoute>} />
+    <Route exact path='/Project-Management/create-team' element={<ProtectedRoute><CreateTeam/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/create-team-roaster" element={<ProtectedRoute><CreateTeamRoaster/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/view-projects" element={<ProtectedRoute><ViewProjects/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/view-teams" element={<ProtectedRoute><ViewTeams/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/view-user-stories" element={<ProtectedRoute><UserStories/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/add-team-members" element={<ProtectedRoute><AddTeamMembers/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/remove-team-members" element={<ProtectedRoute><RemoveTeamMembers/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/assign-user-stories" element={<ProtectedRoute><AssignUserStories/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/view-tasks" element={<ProtectedRoute><ViewTasks/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/home-page" element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+    <Route exact path="/Project-Management/team/:teamId" element={<ProtectedRoute><TeamDetails/></ProtectedRoute>} />
+    <Route exact path="/Project-Management/task/:taskId" element={<ProtectedRoute><TaskDetails/></ProtectedRoute>} />
+    <Route exact path="/Project-Management/project/:projectId" element={<ProtectedRoute><ProjectDetails/></ProtectedRoute>} />
+    <Route exact path="/Project-Management/userstory/:userStoryId" element={<ProtectedRoute><UserStoryDetails/></ProtectedRoute>} />
     </Routes>
     
     </Router>

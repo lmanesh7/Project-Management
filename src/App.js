@@ -3,7 +3,7 @@ import './App.css'; // This will Import your .CSS file
 import Login from './components/login'; // This imports your login.js file
 import Signup from './components/signup'; // This will import your signup.js file
 import CreateProject from './components/CreateProject';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from './components/HomePage';
 import CreateTaskList from './components/CreateTaskList';
 import CreateUserStory from './components/CreateUserStory';
@@ -36,6 +36,7 @@ function App() {
   <Router>
     <SessionManager />
     <Routes>
+    <Route path="/" element={<Navigate to="/Project-Management" replace />} />
     <Route path="/Project-Management" element={<Startup />} />
     <Route exact path="/Project-Management/home" element={<ProtectedRoute><Sidebar/></ProtectedRoute>} />
     <Route exact path="/Project-Management/create-project" element={<ProtectedRoute><CreateProject/></ProtectedRoute>} />
@@ -62,4 +63,3 @@ function App() {
 }
 
 export default App; //makes it available for other parts of the application
- 
